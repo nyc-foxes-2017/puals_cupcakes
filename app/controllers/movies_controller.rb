@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
   end
-  
+
   def new
     @movie = Movie.new
   end
@@ -43,7 +43,7 @@ class MoviesController < ApplicationController
 
     #Will return all movies containing the given search term
     #Case insensitive
-    @movies = Movie.where("title ~* ?", params[:search])
+    @movies = Movie.where("title ~* ?", params[:movies][:search])
 
   end
   private
