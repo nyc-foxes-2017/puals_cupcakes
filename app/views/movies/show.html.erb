@@ -7,5 +7,32 @@
 
 <div id="movie-description">
   <%= @movie[:Plot] %>
-
 </div>
+
+<div class="movie-reviews">
+  <h2> Reviews </h2>
+    <% Review.for_movie(@movie[:imdbID]).each do |review| %>
+  <div class="movie-review">
+    <h3><%= review.title %></h3>
+    <p><%= review.body %><p>
+    <%= review.stars %>
+  </div>
+    <% end %>
+</div>
+  <% if !has_already_reviewed? %>
+  <%= link_to "Review", controller: :reviews, action: :new, movie_id: @movie[:imdbID] %>
+<% end %>
+
+<div class="movie-comments">
+  <h2> Comments </h2>
+    <% Comment.for_movie(@movie[:imdbID]).each do |comment| %>
+  <div class="movie-comment">
+    <p><%= comment.body %><p>
+  </div>
+    <% end %>
+</div>
+
+<% if !has_already_reviewed? %>
+  <%= link_to "Comment", controller: :comments, action: :new, movie_id: @movie[:imdbID] %>
+<% end %>
+
