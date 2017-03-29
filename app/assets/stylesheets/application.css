@@ -20,6 +20,20 @@
           box-sizing: border-box;
 }
 
+
 h1, h2, h3, h4 {
   margin: 0;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.block {
+  display: block;
 }

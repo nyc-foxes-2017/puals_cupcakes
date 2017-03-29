@@ -1,5 +1,20 @@
-<ul>
-  <% @movies.each do |movie| %>
-  <li><%= link_to movie.title, movie %></li>
-  <% end %>
-</ul>
+<h2> Recently Reviewed Movies </h2>
+
+<div id="recent-movies">
+    <% @movies.each do |movie| %>
+    <div class="home-movie inline-block">
+      <div class="home-movie-poster"> <img class="movie-image" src="<%= movie[:Poster] %>"> </div>
+      <div class="overlay white-overlay">
+        <div class="overlay-title">
+            <%= movie[:Title] %>
+        </div>
+        <div class="overlay-stars">
+            <%= Review.for_movie([movie[:imdbID]])[-1].stars %>
+        </div>
+        <div class="overlay-users">
+            -- <%= Review.for_movie([movie[:imdbID]])[-1].username %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+</div>
