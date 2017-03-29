@@ -1,4 +1,7 @@
 <h4 class="reviews-and-ratings"> Reviews &amp; Ratings For </h4>
 <h2 class="review-movie-name"> <%= @movie.title %></h2>
 
-<%= render partial: 'review', collection: @reviews %>
+<%= render partial: 'review', collection: @movie.reviews %>
+<% if !has_already_reviewed? %>
+  <%= link_to "Review", new_movie_review_path %>
+<% end %>
