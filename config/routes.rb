@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations'}
 
-
-  get "/movies/search" => "movies#search"
-
-
+  resources :movies
   resources :movies do
     resources :reviews
     resources :comments
@@ -12,6 +9,11 @@ Rails.application.routes.draw do
 
   resources :users
 
+  get "/movies/search" => "movies#search"
+
+  get "/movies" => "movies#index"
+
+  root "movies#index"
 
 
 end
