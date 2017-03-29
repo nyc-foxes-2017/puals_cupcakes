@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
     @review.movie_id = params[:movie_id]
     @review.user_id = current_user.id
     if @review.save
-      redirect_to movie_reviews_path
+      redirect_to "/movies/#{params[:movie_id]}"
     else
       render :new, status: 422
     end
