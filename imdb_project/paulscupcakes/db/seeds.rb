@@ -7,15 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create([
-  { username: 'michaelrulez',
+  { user_name: 'michaelrulez',
     password: 'password',
     email: 'michael@email.com' },
 
-  { username: 'jordanyrulez',
+  { user_name: 'jordanyrulez',
     password: 'password',
     email: 'jordany@email.com' },
 
-  { username: 'paulrulez',
+  { user_name: 'paulrulez',
     password: 'password',
     email: 'paul@email.com' },
     ])
@@ -24,19 +24,19 @@ Movie.create([
   { title: 'Die Hard with a Vengeance',
     description: 'John McClane and a Harlem store owner are targeted by German terrorist Simon Gruber in New York City, where he plans to rob the Federal Reserve Building.',
     year: 1995,
-    age_rating: R,
+    age_rating: "R",
     duration: 128 },
 
   { title: 'Stardust',
     description: 'In a countryside town bordering on a magical land, a young man makes a promise to his beloved that hell retrieve a fallen star by venturing into the magical realm.',
     year: 2007,
-    age_rating: PG13,
+    age_rating: "PG13",
     duration: 127 },
 
     { title: 'Cop Out',
     description: 'Jimmys rare baseball card is robbed. Since its his only hope to pay for his daughters upcoming wedding, he recruits his cop partner Paul to track down the robber, a memorabilia-obsessed gangster.',
     year: 2010,
-    age_rating: R,
+    age_rating: "R",
     duration: 107 }
 
   ])
@@ -62,17 +62,17 @@ Review.create([
     movie_id: 1,
     title: "best movie ever!!!!!!",
     body: "wow this movie is so gd good. its my favorite movie of all time. its like a great scavenger hunt through nyc. I highly recommend this movie to anyone who hasn't seen it. Seriously, it's the best movie. It's better than all the other die hards wow so good. So realistic.",
-    score: 9 },
+    rating: 9 },
   { user_id: 2,
     movie_id: 1,
     title: "second best movie ever!!!!!!",
     body: "wow this movie is so gd good. its my favorite movie of all time. its like a great scavenger hunt through nyc. I highly recommend this movie to anyone who hasn't seen it. Seriously, it's the best movie. It's better than all the other die hards wow so good. So realistic.",
-    score: 8 },
+    rating: 8 },
   { user_id: 2,
     movie_id: 2,
     title: "bad movie",
     body: "wow this movie is so gd bad. its my least favorite movie of all time. its like a horrible scavenger hunt through nyc. I highly disrecommend this movie to anyone who hasn't seen it. Seriously, it's the worst movie. It's better than all the other stardusts wow so bad. So unrealistic.",
-    score: 4 },
+    rating: 4 },
     ])
 
 Comment.create([
