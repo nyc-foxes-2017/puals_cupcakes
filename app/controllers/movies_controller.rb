@@ -1,11 +1,12 @@
 class MoviesController < ApplicationController
+  include MoviesHelper
 
   def index
     @movies = Movie.all
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    @movie = get_movie_by_id(params[:id])
   end
 
   def new
@@ -43,7 +44,7 @@ class MoviesController < ApplicationController
 
     #Will return all movies containing the given search term
     #Case insensitive
-    @movies = Movie.where("title ~* ?", params[:movies][:search])
+    @movies = search_omdb(params[:movies][:search])
 
   end
   private

@@ -1,13 +1,11 @@
     <%= render partial: 'search_form' %>
 <div id="movie-title">
-  <%= @movie.title %>
+  <%= @movie[:Title] %>
 </div>
 
-<span><%= @movie.year %> <%= @movie.age_rating %> <%= @movie.duration %></span>
+<span><%= @movie[:Year] %> <%= @movie[:Rated] %> <%= @movie[:Runtime] %></span>
 
 <div id="movie-description">
-  <%= @movie.description %>
+  <%= @movie[:Plot] %>
 
 </div>
-
-<%= render @movie.reviews %>

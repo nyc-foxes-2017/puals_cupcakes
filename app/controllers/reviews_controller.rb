@@ -1,22 +1,24 @@
 class ReviewsController < ApplicationController
   include ReviewsHelper
 
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
-    @reviews = Review.all
-    reviews_find_movie
+    @movie = get_movie_by_id(params[:movie_id])
+
+    @reviews = Review.for_movie(params[:movie_id])
   end
 
   def new
-    reviews_find_movie
-    @review = @movie.reviews.new
-    @review.user_id = current_user.id
+    @movie = get_movie_by_id(params[:movie_id])
+    @review = Review.new
+
   end
 
   def create
-    reviews_find_movie
-    @review = @movie.reviews.new(review_params.tap{ |u| u[:rating] = u[:rating].to_i })
+    @review = Review.new(review_params.tap{ |u| u[:rating] = u[:rating].to_i })
+    @review.movie_id = params[:movie_id]
     @review.user_id = current_user.id
-
     if @review.save
       redirect_to movie_reviews_path
     else
@@ -28,5 +30,4 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:title, :body, :rating)
   end
-
 end

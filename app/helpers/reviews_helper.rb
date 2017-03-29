@@ -1,16 +1,18 @@
 module ReviewsHelper
 
   def reviews_find_movie
-    @movie = Movie.find_by(id: params[:movie_id])
+
   end
 
   def find_reviews_by_user
-    reviews_find_movie
-    @movie.reviews.find_by(user_id: current_user.id)
+    current_user.reviews
   end
 
   def has_already_reviewed?
-    !!find_reviews_by_user
+    if !user_signed_in?
+      return false
+    end
+    find_reviews_by_user.any?{|r| r.movie_id == params[:movie_id]}
   end
 
 end

@@ -54,14 +54,13 @@ ActiveRecord::Schema.define(version: 20170329144536) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "movie_id"
+    t.string   "movie_id"
     t.integer  "user_id"
     t.string   "title"
     t.string   "body"
     t.integer  "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_reviews_on_movie_id", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
@@ -89,6 +88,5 @@ ActiveRecord::Schema.define(version: 20170329144536) do
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "movies"
   add_foreign_key "favorites", "users"
-  add_foreign_key "reviews", "movies"
   add_foreign_key "reviews", "users"
 end

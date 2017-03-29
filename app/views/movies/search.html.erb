@@ -1,5 +1,5 @@
 <ul>
   <% @movies.each do |movie| %>
-  <li><%= link_to movie.title, movie %></li>
+  <li><%= link_to movie[:Title], movie[:imdbID] %></li>
   <% end %>
 </ul>
