@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations'}
 
-  resources :movies
+
   resources :movies do
     resources :reviews
     resources :comments
