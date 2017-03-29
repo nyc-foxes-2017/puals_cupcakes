@@ -1,0 +1,13 @@
+
+<div id="movie-title">
+  <%= @movie.title %>
+</div>
+
+<span><%= @movie.year %> <%= @movie.age_rating %> <%= @movie.duration %></span>
+
+<div id="movie-description">
+  <%= @movie.description %>
+
+</div>
+
+<%= render @movie.reviews %>
