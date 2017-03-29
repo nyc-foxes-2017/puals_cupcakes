@@ -1,8 +1,9 @@
 class MoviesController < ApplicationController
   include MoviesHelper
+  include ApplicationHelper
 
   def index
-    @movies = Movie.all
+    find_recent_movies
   end
 
   def show

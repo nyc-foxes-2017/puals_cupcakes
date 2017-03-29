@@ -14,4 +14,8 @@ class Review < ApplicationRecord
     Review.where("movie_id = ?", id)
   end
 
+  def username
+    self.user.user_name
+  end
+
 end

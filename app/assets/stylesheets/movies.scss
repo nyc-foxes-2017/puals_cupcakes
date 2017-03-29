@@ -1,3 +1,38 @@
-// Place all the styles related to the Movies controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.home-movie {
+  width:250px;
+  position: relative;
+}
+
+#recent-movies {
+  text-align: center;
+}
+
+.movie-image {
+  width: 250px;
+  height: 390px;
+}
+
+
+.recent-list {
+  list-style: none;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  bottom: 30px;
+  width: 250px;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  font-family: Verdana, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;}
+
+.overlay-title {
+  font-size: 1.4em;
+}
+
+.white-overlay:hover {
+  text-decoration: underline;
+}
