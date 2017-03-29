@@ -1,1 +1,16 @@
-<%= @user.user_name %>
+<div class="container">
+  <div class="user-info">
+    <h3><%= @user.user_name %> </h3>
+    <p>Member since: <%= time_ago_in_words(@user.created_at) %> ago</p>
+  </div>
+
+  <div class="user-watch-favs-wrapper">
+    <div class="user-favorites">
+      <% @user.favorites.each do |favorite| %>
+        <%= favorite.movie.title %>
+      <% end %>
+    </div>
+    <div class="user-watch-list">
+    </div>
+  </div>
+</div>
