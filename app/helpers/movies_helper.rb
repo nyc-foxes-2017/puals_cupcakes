@@ -27,4 +27,17 @@ module MoviesHelper
     imdbid3 = page.xpath('//*[@id="main"]/div/span/div/div/div[3]/table/tbody/tr[3]/td[2]/a').to_s[16..24]
     @movies3 = [get_movie_by_id(imdbid1), get_movie_by_id(imdbid2), get_movie_by_id(imdbid3)]
   end
+
+  def find_top_box
+    page = Nokogiri::HTML(open("http://www.imdb.com/chart/boxoffice"))
+    imdbid1 = page.xpath('//*[@id="boxoffice"]/table/tbody/tr[1]/td[2]/a').to_s[16..24]
+    imdbid2 = page.xpath('//*[@id="boxoffice"]/table/tbody/tr[2]/td[2]/a').to_s[16..24]
+    imdbid3 = page.xpath('//*[@id="boxoffice"]/table/tbody/tr[3]/td[2]/a').to_s[16..24]
+    @movies4 = [get_movie_by_id(imdbid1), get_movie_by_id(imdbid2), get_movie_by_id(imdbid3)]
+    gross1 = page.xpath('//*[@id="boxoffice"]/table/tbody/tr[1]/td[3]').text
+    gross2 = page.xpath('//*[@id="boxoffice"]/table/tbody/tr[2]/td[3]').text
+    gross3 = page.xpath('//*[@id="boxoffice"]/table/tbody/tr[3]/td[3]').text
+    @grosses = [gross1, gross2, gross3]
+    @weekend = page.xpath('//*[@id="boxoffice"]/h4').text
+  end
 end
