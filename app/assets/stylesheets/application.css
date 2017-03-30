@@ -43,9 +43,22 @@ select {
   display: block;
 }
 
+
+
+#review_body {
+  font-size: 16px;
+  height: 200px;
+}
+
+#new_review {
+  width: 60%;
+  margin: auto;
+}
+
 .input-field input
 {
   margin-top: 20px;
   border: solid;
   padding-left: 0rem;
 }
+

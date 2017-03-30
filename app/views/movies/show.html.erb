@@ -20,7 +20,7 @@
   </div>
     <% end %>
 </div>
-  <% if !has_already_reviewed? %>
+  <% if !find_reviews_by_user.any?{|r| r.movie_id == params[:id]} %>
   <%= link_to "Review", controller: :reviews, action: :new, movie_id: @movie[:imdbID] %>
 <% end %>
 
@@ -34,6 +34,6 @@
     <% end %>
 </div>
 
-<% if !has_already_reviewed? %>
+<% if user_signed_in? %>
   <%= link_to "Comment", controller: :comments, action: :new, movie_id: @movie[:imdbID] %>
 <% end %>
