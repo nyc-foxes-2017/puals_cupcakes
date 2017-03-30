@@ -17,6 +17,9 @@
   list-style: none;
 }
 
+.movie-poster-card{
+  width:300px;
+}
 .overlay {
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
@@ -80,4 +83,26 @@
 
 .homepage-link {
   color: white;
+}
+
+.card .card-reveal {
+  background-color: rgba(0,0,0,.5);
+  color: white;
+}
+
+.movie-reviews {
+  width: 300px;
+  padding-left: 20px;
+}
+
+.reviews-comments {
+  padding-left: 20px;
+  position: relative;
+}
+.fav-watchlist {
+  padding-left:20px;
+}
+
+footer {
+  clear:both;
 }
