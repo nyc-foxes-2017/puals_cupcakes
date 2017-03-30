@@ -8,7 +8,6 @@
   def get_movie_by_id(id)
     request = HTTParty.get("http://www.omdbapi.com/?i=#{id}", format: :plain)
     JSON.parse request, symbolize_names: true
-
   end
 
   def search_omdb(query)

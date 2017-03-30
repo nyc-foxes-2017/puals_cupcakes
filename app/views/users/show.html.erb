@@ -8,14 +8,14 @@
     <div class="user-favorites">
       <h2> Favorite movies </h2>
       <% @user.favorites.each do |favorite| %>
-        <p><%= link_to favorite.movie.title, movie_path(favorite.movie) %></p>
+        <p><%= link_to get_movie_by_id(favorite.movie_id)[:Title], "/movies/#{favorite.movie_id}" %></p>
       <% end %>
     </div>
 
     <div class="user-watch-list">
       <h2> Movies to watch </h2>
       <% @user.backlogs.each do |backlog| %>
-        <p><%= link_to backlog.movie.title, movie_path(backlog.movie) %></p>
+        <p><%= link_to get_movie_by_id(backlog.movie_id)[:Title], "/movies/#{backlog.movie_id}" %></p>
       <% end %>
     </div>
 
@@ -26,7 +26,7 @@
     <% @user.reviews.each do |review| %>
 
     <div class="user-review">
-      <p><%= link_to review.movie.title, review.movie %></p>
+      <p><%= link_to get_movie_by_id(review.movie_id)[:Title], "/movies/#{review.movie_id}"%></p>
       <p><%=review.title %></p>
       <p><%= review.body %></p>
       <p>Rating: <%= review.rating %></p>

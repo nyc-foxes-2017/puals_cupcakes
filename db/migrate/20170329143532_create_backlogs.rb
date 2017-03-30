@@ -2,7 +2,7 @@ class CreateBacklogs < ActiveRecord::Migration[5.0]
   def change
     create_table :backlogs do |t|
 
-      t.references :movie, foreign_key: true
+      t.string :movie_id
       t.references :user, foreign_key: true
       
       t.timestamps
