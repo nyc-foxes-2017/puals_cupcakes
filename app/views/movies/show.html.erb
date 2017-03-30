@@ -1,4 +1,4 @@
-    <%= render partial: 'search_form' %>
+
 <div id="movie-title">
   <%= @movie[:Title] %>
 </div>
@@ -37,4 +37,3 @@
 <% if !has_already_reviewed? %>
   <%= link_to "Comment", controller: :comments, action: :new, movie_id: @movie[:imdbID] %>
 <% end %>
-

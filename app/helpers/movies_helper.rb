@@ -5,8 +5,10 @@ module MoviesHelper
   end
 
   def find_recent_movies
+
     recent_reviews = Review.all.order("created_at DESC").limit(3)
     @movies = recent_reviews.map{ |review| get_movie_by_id( review[:movie_id]) }
+
   end
 
   def find_opening_movies

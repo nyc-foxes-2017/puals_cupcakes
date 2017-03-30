@@ -3,7 +3,8 @@
 <h2 class="homepage-header">IMDB </h2>
 <h4 class="homepage-subheader"> Recent Reviews </h4>
 <div class="recent-movies">
-    <% @movies.each do |movie| %>
+    <% @movies_list.each do |movie| %>
+
     <div class="home-movie inline-block">
       <div class="home-movie-poster"> <img class="movie-image" src="<%= movie[:Poster] %>"> </div>
       <div class="overlay white-overlay">
