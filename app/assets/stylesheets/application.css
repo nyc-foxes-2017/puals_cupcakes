@@ -21,13 +21,21 @@
 }
 
 
-hd1, h2, h3, h4 {
+h1, h2, h3, h4 {
   margin: 0;
 }
 
+.homepage h2{
+  padding-left:15px;
+}
+
+.homepage h4{
+  padding-left:15px;
+}
 .container {
   width: 800px;
   margin: 0 auto;
+  padding-bottom: 40px;
 
 }
 
@@ -43,6 +51,9 @@ select {
   display: block;
 }
 
+footer .footer-copyright {
+  background-color: #ee6e73
+}
 
 
 #review_body {

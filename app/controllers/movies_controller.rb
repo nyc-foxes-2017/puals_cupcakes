@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
     find_recent_movies
     find_opening_movies
     find_best_movies
+    find_top_box
   end
 
   def show
