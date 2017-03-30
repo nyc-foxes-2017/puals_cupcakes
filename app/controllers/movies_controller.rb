@@ -1,9 +1,12 @@
 class MoviesController < ApplicationController
   include MoviesHelper
   include ApplicationHelper
+  require 'open-uri'
 
   def index
     find_recent_movies
+    find_opening_movies
+    find_best_movies
   end
 
   def show
@@ -45,7 +48,7 @@ class MoviesController < ApplicationController
 
     #Will return all movies containing the given search term
     #Case insensitive
-    @movies = search_omdb(params[:movies][:search])
+    @movies_list = search_omdb(params[:movies][:search])
 
   end
   private

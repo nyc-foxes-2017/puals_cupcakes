@@ -3,7 +3,7 @@
   position: relative;
 }
 
-#recent-movies {
+.recent-movies {
   text-align: center;
 }
 
@@ -33,6 +33,40 @@
   font-size: 1.4em;
 }
 
+.overlay-date {
+  font-size: 1.2em;
+  font-weight: 800;
+}
+
+.overlay-rating {
+  font-size: 1.4em
+}
 .white-overlay:hover {
   text-decoration: underline;
+}
+
+.homepage-header {
+  font-family: "Open Sans", "Helvetica Neu", Helvetica;
+  font-weight: 100;
+  line-height: 1.1;
+  color: #222;
+  font-size: 60px;
+  margin-top: 21px;
+  margin-bottom: 10.5px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.homepage-subheader {
+  font-family: "Open Sans", "Helvetica Neu", Helvetica;
+  line-height: 1.4;
+  font-weight: 300;
+  color: #6f6f6f;
+  font-size: 22.5px;
+  margin-top: 21px;
+  margin-bottom: 10.5px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.homepage-link {
+  color: white;
 }

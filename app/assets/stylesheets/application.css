@@ -21,13 +21,14 @@
 }
 
 
-h1, h2, h3, h4 {
+hd1, h2, h3, h4 {
   margin: 0;
 }
 
 .container {
   width: 800px;
   margin: 0 auto;
+
 }
 
 .inline-block {
@@ -43,6 +44,7 @@ select {
 }
 
 
+
 #review_body {
   font-size: 16px;
   height: 200px;
@@ -51,5 +53,12 @@ select {
 #new_review {
   width: 60%;
   margin: auto;
+}
+
+.input-field input
+{
+  margin-top: 20px;
+  border: solid;
+  padding-left: 0rem;
 }
 
