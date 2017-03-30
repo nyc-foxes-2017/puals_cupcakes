@@ -9,11 +9,5 @@ class User < ApplicationRecord
   has_many :comments
   has_many :reviews
 
-  def activity_feed
-    feed = []
-    feed << self.favorites
-    feed << self.backlogs
-    feed << self.reviews
-    feed << self.comments
-  end
+
 end
