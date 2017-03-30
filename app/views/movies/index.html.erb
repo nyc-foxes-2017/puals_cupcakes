@@ -1,18 +1,59 @@
-<h2> Recently Reviewed Movies </h2>
 
-<div id="recent-movies">
+
+<h2 class="homepage-header">IMDB </h2>
+<h4 class="homepage-subheader"> Recent Reviews </h4>
+<div class="recent-movies">
     <% @movies_list.each do |movie| %>
+
     <div class="home-movie inline-block">
       <div class="home-movie-poster"> <img class="movie-image" src="<%= movie[:Poster] %>"> </div>
       <div class="overlay white-overlay">
         <div class="overlay-title">
-            <%=link_to movie[:Title], "/movies/#{movie[:imdbID]}" %>
+            <%=link_to movie[:Title], "/movies/#{movie[:imdbID]}", class: "homepage-link" %>
         </div>
         <div class="overlay-stars">
             <%= Review.for_movie([movie[:imdbID]])[-1].stars %>
         </div>
         <div class="overlay-users">
-            -- <%= link_to Review.for_movie([movie[:imdbID]])[-1].username, user_path(Review.for_movie([movie[:imdbID]])[-1].user) %>
+            -- <%= link_to Review.for_movie([movie[:imdbID]])[-1].username, user_path(Review.for_movie([movie[:imdbID]])[-1].user), class: "homepage-link" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+</div>
+
+
+<h4 class="homepage-subheader"> Coming Soon </h4>
+
+<div class="recent-movies">
+    <% @movies2.each do |movie| %>
+    <div class="home-movie inline-block">
+      <div class="home-movie-poster"> <img class="movie-image" src="<%= movie[:Poster] %>"> </div>
+      <div class="overlay white-overlay">
+        <div class="overlay-title">
+            <%=link_to movie[:Title], "/movies/#{movie[:imdbID]}", class: "homepage-link" %>
+        </div>
+        <div class="overlay-date">
+            <%= @date %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+</div>
+
+<h4 class="homepage-subheader"> Top Rated </h4>
+
+
+<div class="recent-movies">
+    <% @movies3.each do |movie| %>
+    <div class="home-movie inline-block">
+      <div class="home-movie-poster"> <img class="movie-image" src="<%= movie[:Poster] %>"> </div>
+      <div class="overlay white-overlay">
+        <div class="overlay-title">
+            <%=link_to movie[:Title], "/movies/#{movie[:imdbID]}", class: "homepage-link" %>
+        </div>
+        <div class="overlay-rating">
+            ⭐ <%= movie[:imdbRating] %>
         </div>
       </div>
     </div>
