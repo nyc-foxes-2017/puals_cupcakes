@@ -25,6 +25,13 @@ h1, h2, h3, h4 {
   margin: 0;
 }
 
+.homepage h2{
+  padding-left:15px;
+}
+
+.homepage h4{
+  padding-left:15px;
+}
 .container {
   width: 800px;
   margin: 0 auto;
