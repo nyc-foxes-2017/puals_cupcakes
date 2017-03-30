@@ -16,6 +16,7 @@
     <h3><%= review.title %></h3>
     <p><%= review.body %><p>
     <%= review.stars %>
+    <p>--<%= link_to review.user.user_name, user_path(review.user) %></p>
   </div>
     <% end %>
 </div>
@@ -28,6 +29,7 @@
     <% Comment.for_movie(@movie[:imdbID]).each do |comment| %>
   <div class="movie-comment">
     <p><%= comment.body %><p>
+    <p>--<%= link_to comment.user.user_name, user_path(comment.user) %></p>
   </div>
     <% end %>
 </div>
