@@ -8,6 +8,4 @@ class User < ApplicationRecord
   has_many :backlogs
   has_many :comments
   has_many :reviews
-
-gi
 end
