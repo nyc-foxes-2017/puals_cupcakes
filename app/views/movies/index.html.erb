@@ -6,13 +6,13 @@
       <div class="home-movie-poster"> <img class="movie-image" src="<%= movie[:Poster] %>"> </div>
       <div class="overlay white-overlay">
         <div class="overlay-title">
-            <%= movie[:Title] %>
+            <%=link_to movie[:Title], "/movies/#{movie[:imdbID]}" %>
         </div>
         <div class="overlay-stars">
             <%= Review.for_movie([movie[:imdbID]])[-1].stars %>
         </div>
         <div class="overlay-users">
-            -- <%= Review.for_movie([movie[:imdbID]])[-1].username %>
+            -- <%= link_to Review.for_movie([movie[:imdbID]])[-1].username, user_path(Review.for_movie([movie[:imdbID]])[-1].user) %>
         </div>
       </div>
     </div>
