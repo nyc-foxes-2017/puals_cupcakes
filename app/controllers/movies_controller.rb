@@ -1,9 +1,12 @@
 class MoviesController < ApplicationController
   include MoviesHelper
   include ApplicationHelper
+  require 'open-uri'
 
   def index
     find_recent_movies
+    find_opening_movies
+    find_best_movies
   end
 
   def show
