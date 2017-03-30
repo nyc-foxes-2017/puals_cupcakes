@@ -35,31 +35,17 @@
   </div>
 <div class="fav-watchlist inline-block">
   <% if user_signed_in? %>
-      <% if !has_already_favorited? %>
-        <%= form_for :favorite, url: movie_favorites_path(@movie[:imdbID]) do |f|%>
-        <%= f.submit "Favorite"%>
-        <% end %>
-      <% else %>
-        <%= form_for :favorite, url: movie_favorite_path(@movie[:imdbID]), method: :delete do |f|%>
-        <%= f.submit "Unfavorite"%>
-        <% end %>
-      <% end %>
-
-
-      <% if !has_already_backlogged? %>
-        <%= form_for :backlog, url: movie_backlogs_path(@movie[:imdbID]) do |f|%>
-        <%= f.submit "Add to watchlist"%>
-        <% end %>
-      <% else %>
-        <%= form_for :backlog, url: movie_backlog_path(@movie[:imdbID]), method: :delete do |f|%>
-        <%= f.submit "Remove from watchlist"%>
-        <% end %>
-      <% end %>
+      <div id='favorite-container'>
+        <%= render partial: "favorites_part" %>
+      </div>
+      <div id='backlog-container'>
+        <%= render partial: "backlogs_part" %>
+      </div>
 
   <% end %>
 
     <% if !has_already_reviewed_show? %>
-    <%= link_to "Review", controller: :reviews, action: :new, movie_id: @movie[:imdbID] %>
+    <%= link_to "Review", {controller: :reviews, action: :new, movie_id: @movie[:imdbID]},id: "new-review-link" %>
   <% end %>
 
   <div class="movie-comments">

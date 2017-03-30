@@ -1,0 +1,9 @@
+<% if !has_already_backlogged? %>
+  <%= form_for :backlog, url: movie_backlogs_path(@movie[:imdbID]) do |f|%>
+  <%= f.submit "Add to watchlist"%>
+  <% end %>
+<% else %>
+  <%= form_for :backlog, url: movie_backlog_path(@movie[:imdbID]), method: :delete do |f|%>
+  <%= f.submit "Remove from watchlist"%>
+  <% end %>
+<% end %>

@@ -10,9 +10,12 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @movie = get_movie_by_id(params[:movie_id])
-    @review = Review.new
-
+    if request.xhr?
+      render partial: :'new'
+    else
+      @movie = get_movie_by_id(params[:movie_id])
+      @review = Review.new
+    end
   end
 
   def create

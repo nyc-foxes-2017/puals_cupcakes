@@ -1,0 +1,9 @@
+<% if !has_already_favorited? %>
+  <%= form_for :favorite, url: movie_favorites_path(@movie[:imdbID]), html: {id: "favorite-form"} do |f|%>
+  <%= f.submit "Favorite"%>
+  <% end %>
+<% else %>
+  <%= form_for :favorite, url: movie_favorite_path(@movie[:imdbID]), method: :delete, html: {id: "favorite-form"}  do |f|%>
+  <%= f.submit "Unfavorite"%>
+  <% end %>
+<% end %>
