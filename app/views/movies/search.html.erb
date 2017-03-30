@@ -1,5 +1,9 @@
 <ul>
-  <% @movies_list.each do |movie| %>
-  <li><%= link_to movie[:Title], movie[:imdbID] %></li>
+  <% unless @errors %>
+    <%  @movies_list.each do |movie| %>
+    <li><%= link_to movie[:Title], movie[:imdbID] %></li>
+    <% end %>
+  <% else %>
+    <p> no results found </p>
   <% end %>
 </ul>

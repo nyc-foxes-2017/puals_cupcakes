@@ -49,6 +49,9 @@ class MoviesController < ApplicationController
     #Will return all movies containing the given search term
     #Case insensitive
     @movies_list = search_omdb(params[:movies][:search])
+    if @movies_list = []
+      @errors = ["sorry no movies found"]
+    end
 
   end
   private
