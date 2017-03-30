@@ -20,27 +20,6 @@ User.create([
     email: 'paul@email.com' },
     ])
 
-Movie.create([
-  { title: 'Die Hard with a Vengeance',
-    description: 'John McClane and a Harlem store owner are targeted by German terrorist Simon Gruber in New York City, where he plans to rob the Federal Reserve Building.',
-    year: 1995,
-    age_rating: "R",
-    duration: 128 },
-
-  { title: 'Stardust',
-    description: 'In a countryside town bordering on a magical land, a young man makes a promise to his beloved that hell retrieve a fallen star by venturing into the magical realm.',
-    year: 2007,
-    age_rating: "PG13",
-    duration: 127 },
-
-    { title: 'Cop Out',
-    description: 'Jimmys rare baseball card is robbed. Since its his only hope to pay for his daughters upcoming wedding, he recruits his cop partner Paul to track down the robber, a memorabilia-obsessed gangster.',
-    year: 2010,
-    age_rating: "R",
-    duration: 107 }
-
-  ])
-
 Favorite.create([
   { user_id: 1,
     movie_id: 1},
