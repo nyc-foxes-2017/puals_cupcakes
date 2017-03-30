@@ -4,6 +4,12 @@
     <p>Member since: <%= time_ago_in_words(@user.created_at) %> ago</p>
   </div>
 
+  <div class="Activity Feed">
+    <h2>Activity Feed</h2>
+    <% @user.top_ten.each do |activity| %>
+      <p><%= @user.has_done(activity) %> <%= time_ago_in_words(activity.created_at) %> ago</p>
+    <% end %>
+  </div>
   <div class="user-watch-favs-wrapper">
     <div class="user-favorites">
       <h2> Favorite movies </h2>
@@ -20,7 +26,6 @@
     </div>
 
   </div>
-
   <div class="user-all-reviews">
     <h2><%= @user.user_name%>'s reviews</h2>
     <% @user.reviews.each do |review| %>
