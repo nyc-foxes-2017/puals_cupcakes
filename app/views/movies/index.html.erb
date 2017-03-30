@@ -5,6 +5,7 @@
         <h4 class="homepage-subheader"> Recent Reviews </h4>
         <div class="recent-movies">
             <% @movies_list.each do |movie| %>
+            <% next if movie[:Response] == "False" %>
             <div class="home-movie inline-block">
               <div class="home-movie-poster"> <img class="movie-image" src="<%= movie[:Poster] %>"> </div>
               <div class="overlay white-overlay">
@@ -12,7 +13,7 @@
                     <%=link_to movie[:Title], "/movies/#{movie[:imdbID]}", class: "homepage-link" %>
                 </div>
                 <div class="overlay-stars">
-                    <%= Review.for_movie([movie[:imdbID]])[-1].stars %>
+                    <%= Review.for_movie(movie[:imdbID])[-1].stars %>
                 </div>
                 <div class="overlay-users">
                     -- <%= link_to Review.for_movie([movie[:imdbID]])[-1].username, user_path(Review.for_movie([movie[:imdbID]])[-1].user), class: "homepage-link" %>
