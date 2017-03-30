@@ -5,6 +5,30 @@
 
 <span><%= @movie[:Year] %> <%= @movie[:Rated] %> <%= @movie[:Runtime] %></span>
 
+<% if user_signed_in? %>
+    <% if !has_already_favorited? %>
+      <%= form_for :favorite, url: movie_favorites_path(@movie[:imdbID]) do |f|%>
+      <%= f.submit "Favorite"%>
+      <% end %>
+    <% else %>
+      <%= form_for :favorite, url: movie_favorite_path(@movie[:imdbID]), method: :delete do |f|%>
+      <%= f.submit "Unfavorite"%>
+      <% end %>
+    <% end %>
+
+
+    <% if !has_already_backlogged? %>
+      <%= form_for :backlog, url: movie_backlogs_path(@movie[:imdbID]) do |f|%>
+      <%= f.submit "Add to watchlist"%>
+      <% end %>
+    <% else %>
+      <%= form_for :backlog, url: movie_backlog_path(@movie[:imdbID]), method: :delete do |f|%>
+      <%= f.submit "Remove from watchlist"%>
+      <% end %>
+    <% end %>
+
+<% end %>
+
 <div id="movie-description">
   <%= @movie[:Plot] %>
 </div>
