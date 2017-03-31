@@ -13,3 +13,23 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(document).ready(function(){
+
+$('#favorite-container').on('submit', function(event){
+  event.preventDefault()
+  var current = $(this).find("#favorite-form")
+  var action = current.attr('action')
+  var method = current.attr('method')
+  var data = current.serialize();
+  $.ajax({
+    url: action,
+    method: method,
+    data: data
+  }).done(function(response){
+    console.log(response);
+    $("#favorite-container").empty();
+    $("#favorite-container").append(response);
+  })
+})
+
+})
