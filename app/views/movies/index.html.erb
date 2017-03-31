@@ -1,0 +1,88 @@
+<div class="homepage">
+
+    <h2 class="homepage-header">IMDB </h2>
+    <% if @movies_list.length >0 %>
+        <h4 class="homepage-subheader"> Recent Reviews </h4>
+        <div class="flexslider">
+            <ul class="slides">
+            <% @movies_list.each do |movie| %>
+
+            <% next if movie[:Response] == "False" %>
+
+            <li>
+            <div class="home-movie inline-block">
+              <div class="home-movie-poster"> <img class="movie-image" src="<%= movie[:Poster] %>"> </div>
+              <div class="overlay white-overlay">
+                <div class="overlay-title">
+                    <%=link_to movie[:Title], "/movies/#{movie[:imdbID]}", class: "homepage-link" %>
+                </div>
+                <div class="overlay-stars">
+                    <%= Review.for_movie(movie[:imdbID])[-1].stars %>
+                </div>
+                <div class="overlay-users">
+                    -- <%= link_to Review.for_movie([movie[:imdbID]])[-1].username, user_path(Review.for_movie([movie[:imdbID]])[-1].user), class: "homepage-link" %>
+                </div>
+              </div>
+            </div>
+        </li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+    <h4 class="homepage-subheader"> Top Box Office </h4>
+    <h4 class="homepage-sub-subheader"> <%= @weekend %> </h4>
+
+    <div class="recent-movies2">
+        <% @movies4.each_with_index do |movie, i| %>
+        <div class="home-movie inline-block">
+          <div class="home-movie-poster"> <img class="movie-image" src="<%= movie[:Poster] %>"> </div>
+          <div class="overlay white-overlay">
+            <div class="overlay-title">
+                <%=link_to movie[:Title], "/movies/#{movie[:imdbID]}", class: "homepage-link" %>
+            </div>
+            <div class="overlay-date">
+                <%= @grosses[i] %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+    </div>
+
+    <h4 class="homepage-subheader"> Coming Soon </h4>
+
+    <div class="recent-movies2">
+        <% @movies2.each do |movie| %>
+        <div class="home-movie inline-block">
+          <div class="home-movie-poster"> <img class="movie-image" src="<%= movie[:Poster] %>"> </div>
+          <div class="overlay white-overlay">
+            <div class="overlay-title">
+                <%=link_to movie[:Title], "/movies/#{movie[:imdbID]}", class: "homepage-link" %>
+            </div>
+            <div class="overlay-date">
+                <%= @date %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+    </div>
+
+    <h4 class="homepage-subheader"> Top Rated </h4>
+
+
+    <div class="recent-movies2">
+        <% @movies3.each do |movie| %>
+        <div class="home-movie inline-block">
+          <div class="home-movie-poster"> <img class="movie-image" src="<%= movie[:Poster] %>"> </div>
+          <div class="overlay white-overlay">
+            <div class="overlay-title">
+                <%=link_to movie[:Title], "/movies/#{movie[:imdbID]}", class: "homepage-link" %>
+            </div>
+            <div class="overlay-rating">
+                ⭐ <%= movie[:imdbRating] %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+    </div>
+</div>

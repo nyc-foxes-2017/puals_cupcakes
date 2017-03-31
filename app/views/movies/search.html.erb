@@ -1,0 +1,9 @@
+<ul>
+  <% if !@movies_list.nil? %>
+    <%  @movies_list.each do |movie| %>
+    <li><%= link_to movie[:Title], movie[:imdbID] %></li>
+    <% end %>
+  <% else %>
+    <p> Sorry no movies were found </p>
+    <% end %>
+</ul>

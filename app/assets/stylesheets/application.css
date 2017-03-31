@@ -1,0 +1,91 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.flexslider {
+  width:800px;
+  height: 390px;
+}
+
+.flexslider .slides img {
+    width: 250px;
+    height: 390px;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
+.homepage h2{
+  padding-left:15px;
+}
+
+.homepage h4{
+  padding-left:15px;
+}
+.container {
+  width: 800px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
+select {
+  display: block;
+}
+
+footer .footer-copyright {
+  background-color: #ee6e73
+}
+
+
+#review_body {
+  font-size: 16px;
+  height: 200px;
+}
+
+.btn {
+  margin: 10px 0px;
+}
+
+#new_review {
+  width: 60%;
+  margin: auto;
+}
+
+.input-field input
+{
+  margin-top: 20px;
+  border: solid;
+  padding-left: 0rem;
+}
+
+.small-text{
+  font-size:12px;
+}

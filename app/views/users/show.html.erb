@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="user-info">
+    <h1><%= @user.user_name %> </h1>
+    <p>Member since: <%= time_ago_in_words(@user.created_at) %> ago</p>
+  </div>
+
+  <div class="Activity Feed">
+    <h2>Activity Feed</h2>
+    <% @user.top_ten.each do |activity| %>
+      <p><%= @user.has_done(activity) %> <%= time_ago_in_words(activity.created_at) %> ago</p>
+    <% end %>
+  </div>
+  <div class="user-watch-favs-wrapper">
+    <div class="user-favorites">
+      <h2> Favorite movies </h2>
+      <% @user.favorites.each do |favorite| %>
+        <p><%= link_to get_movie_by_id(favorite.movie_id)[:Title], "/movies/#{favorite.movie_id}" %></p>
+      <% end %>
+    </div>
+
+    <div class="user-watch-list">
+      <h2> Movies to watch </h2>
+      <% @user.backlogs.each do |backlog| %>
+        <p><%= link_to get_movie_by_id(backlog.movie_id)[:Title], "/movies/#{backlog.movie_id}" %></p>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="user-all-reviews">
+    <h2><%= @user.user_name%>'s reviews</h2>
+    <% @user.reviews.each do |review| %>
+
+    <div class="user-review">
+      <p><%= link_to get_movie_by_id(review.movie_id)[:Title], "/movies/#{review.movie_id}"%></p>
+      <p><%=review.title %></p>
+      <p><%= review.body %></p>
+      <p>Rating: <%= review.rating %></p>
+    </div>
+    <% end %>
+  </div>
+
+</div>

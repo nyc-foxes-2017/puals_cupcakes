@@ -1,0 +1,90 @@
+
+<h2 class="movie-title">
+  <%= @movie[:Title] %>
+</h2>
+
+ <div class="card movie-poster-card left">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="<%= @movie[:Poster]%>">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4"><%= @movie[:Title] %><br>
+        <%= @movie[:Year] %> | <%= @movie[:Rated] %> | <%= @movie[:Runtime] %>
+      </span>
+
+    </div>
+    <div class="card-reveal">
+      <span class="card-title white-text text-darken-4"><%= @movie[:Title] %><i class="material-icons right">close</i></span>
+      <span><p class="small-text"><%= @movie[:Plot] %></span>
+      <p><strong>Director:</strong> <%= @movie[:Director] %></p>
+      <p><strong>Actors:</strong> <%= @movie[:Actors] %></p>
+      <p><strong>Genre:</strong> <%= @movie[:Genre] %></p>
+    </div>
+  </div>
+    <h3 class="inline-block" style="padding-left: 15px"> reviews </h3>
+      <div class="row">
+      <% Review.for_movie(@movie[:imdbID]).each do |review| %>
+
+        <div class="col s4 m5">
+          <div class="card white">
+            <div class="card-content black-text">
+              <span class="card-title"> <%= review.title %> </span>
+                <p><%= review.body %></p>
+                <p><%= review.stars %></p>
+                <p>--<%= link_to review.user.user_name, user_path(review.user) %></p>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+
+
+<div class="fav-watchlist inline-block">
+  <% if user_signed_in? %>
+
+      <% if !has_already_favorited? %>
+        <%= form_for :favorite, url: movie_favorites_path(@movie[:imdbID]) do |f|%>
+        <%= f.submit "favorite", class: "waves-effect waves-light btn" %>
+        <% end %>
+      <% else %>
+        <%= form_for :favorite, url: movie_favorite_path(@movie[:imdbID]), method: :delete do |f|%>
+        <%= f.submit "Unfavorite", class: "waves-effect waves-light btn" %>
+        <% end %>
+      <% end %>
+
+
+      <% if !has_already_backlogged? %>
+        <%= form_for :backlog, url: movie_backlogs_path(@movie[:imdbID]) do |f|%>
+        <%= f.submit "Add to watchlist", class: "waves-effect waves-light btn"%>
+        <% end %>
+      <% else %>
+        <%= form_for :backlog, url: movie_backlog_path(@movie[:imdbID]), method: :delete do |f|%>
+        <%= f.submit "Remove from watchlist", class: "waves-effect waves-light btn"%>
+        <% end %>
+      <% end %>
+
+
+  <% end %>
+
+    <% if !has_already_reviewed_show? %>
+    <%= link_to "Review", {controller: :reviews, action: :new, movie_id: @movie[:imdbID]},id: "new-review-link" %>
+  <% end %>
+
+  <div class="movie-comments">
+    <h2> Comments </h2>
+      <% Comment.for_movie(@movie[:imdbID]).each do |comment| %>
+    <div class="movie-comment">
+      <p><%= comment.body %><p>
+      <p>--<%= link_to comment.user.user_name, user_path(comment.user) %></p>
+    </div>
+      <% end %>
+  </div>
+
+  <% if user_signed_in? %>
+    <%= link_to "Comment", controller: :comments, action: :new, movie_id: @movie[:imdbID] %>
+  <% end %>
+</div>
+   </div>
+
+
+</div>
