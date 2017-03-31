@@ -15,32 +15,54 @@
     </div>
     <div class="card-reveal">
       <span class="card-title white-text text-darken-4"><%= @movie[:Title] %><i class="material-icons right">close</i></span>
-      <p><%= @movie[:Plot] %></p>
+      <span><p class="small-text"><%= @movie[:Plot] %></span>
       <p><strong>Director:</strong> <%= @movie[:Director] %></p>
       <p><strong>Actors:</strong> <%= @movie[:Actors] %></p>
       <p><strong>Genre:</strong> <%= @movie[:Genre] %></p>
     </div>
   </div>
-<div class="reviews-comments">
-  <div class="movie-reviews inline-block">
-    <h3> Reviews </h3>
+    <h3 class="inline-block" style="padding-left: 15px"> reviews </h3>
+      <div class="row">
       <% Review.for_movie(@movie[:imdbID]).each do |review| %>
-    <div class="movie-review">
-      <h4><%= review.title %></h4>
-      <p><%= review.body %><p>
-      <%= review.stars %>
-      <p>--<%= link_to review.user.user_name, user_path(review.user) %></p>
-    </div>
+
+        <div class="col s4 m5">
+          <div class="card white">
+            <div class="card-content black-text">
+              <span class="card-title"> <%= review.title %> </span>
+                <p><%= review.body %></p>
+                <p><%= review.stars %></p>
+                <p>--<%= link_to review.user.user_name, user_path(review.user) %></p>
+            </div>
+          </div>
+        </div>
+
       <% end %>
-  </div>
+
+
 <div class="fav-watchlist inline-block">
   <% if user_signed_in? %>
-      <div id='favorite-container'>
-        <%= render partial: "favorites_part" %>
-      </div>
-      <div id='backlog-container'>
-        <%= render partial: "backlogs_part" %>
-      </div>
+
+      <% if !has_already_favorited? %>
+        <%= form_for :favorite, url: movie_favorites_path(@movie[:imdbID]) do |f|%>
+        <%= f.submit "favorite", class: "waves-effect waves-light btn" %>
+        <% end %>
+      <% else %>
+        <%= form_for :favorite, url: movie_favorite_path(@movie[:imdbID]), method: :delete do |f|%>
+        <%= f.submit "Unfavorite", class: "waves-effect waves-light btn" %>
+        <% end %>
+      <% end %>
+
+
+      <% if !has_already_backlogged? %>
+        <%= form_for :backlog, url: movie_backlogs_path(@movie[:imdbID]) do |f|%>
+        <%= f.submit "Add to watchlist", class: "waves-effect waves-light btn"%>
+        <% end %>
+      <% else %>
+        <%= form_for :backlog, url: movie_backlog_path(@movie[:imdbID]), method: :delete do |f|%>
+        <%= f.submit "Remove from watchlist", class: "waves-effect waves-light btn"%>
+        <% end %>
+      <% end %>
+
 
   <% end %>
 
@@ -62,4 +84,7 @@
     <%= link_to "Comment", controller: :comments, action: :new, movie_id: @movie[:imdbID] %>
   <% end %>
 </div>
+   </div>
+
+
 </div>

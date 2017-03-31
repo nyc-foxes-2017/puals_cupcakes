@@ -20,6 +20,15 @@
           box-sizing: border-box;
 }
 
+.flexslider {
+  width:800px;
+  height: 390px;
+}
+
+.flexslider .slides img {
+    width: 250px;
+    height: 390px;
+}
 
 h1, h2, h3, h4 {
   margin: 0;
@@ -61,6 +70,10 @@ footer .footer-copyright {
   height: 200px;
 }
 
+.btn {
+  margin: 10px 0px;
+}
+
 #new_review {
   width: 60%;
   margin: auto;
@@ -73,3 +86,6 @@ footer .footer-copyright {
   padding-left: 0rem;
 }
 
+.small-text{
+  font-size:12px;
+}
